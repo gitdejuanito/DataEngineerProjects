@@ -10,7 +10,7 @@ https://coincap.io/
 https://docs.coincap.io/
 
 
-Finally, I used PowerBi to have a table and a visualization of the prices. I load the CSV file to PowerBI and every 30 seconds you can refresh the data and the prices will change.
+Finally, I used PowerBi to have a table and a visualization of the prices. I loaded the CSV file to PowerBI and every 30 seconds you can refresh the data and the prices will change.
 
 
 NOTE: For refreshing the data, everytime we need to run producer and consumer scripts
