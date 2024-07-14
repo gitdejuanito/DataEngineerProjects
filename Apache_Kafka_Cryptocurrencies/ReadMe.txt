@@ -3,7 +3,7 @@ Cryptocurrencies
 
 Hi ! This is a small Project using Apache Kafka and Power BI, to visualize in real time the Price of some of the most important cryptocurrencies.
 
-I use some of the basic concepts of Apache Kafka using a PRODUCER and CONSUMER scripts to extract the Price of the cryptocurrencies EVERY 30 seconds, due to the free API of Coincap just return the prices every 30 seconds, and then load the records into a CSV file.
+I used some of the basic concepts of Apache Kafka using a PRODUCER and CONSUMER scripts to extract the Price of the cryptocurrencies EVERY 30 seconds, due to the free API of Coincap just return the prices every 30 seconds, and then load the records into a CSV file.
 
 Here are the links of the Price sources:
 https://coincap.io/
