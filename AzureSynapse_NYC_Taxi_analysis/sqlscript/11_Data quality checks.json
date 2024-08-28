@@ -1,0 +1,20 @@
+{
+	"name": "11_Data quality checks",
+	"properties": {
+		"folder": {
+			"name": "nyc_taxi/discovery"
+		},
+		"content": {
+			"query": "SELECT\n    payment_type, COUNT(1) AS number_of_records\nFROM\n    OPENROWSET(\n        BULK 'trip_data_green_parquet/year=2020/month=01/',\n        FORMAT = 'PARQUET',\n        DATA_SOURCE = 'nyc_taxi_data_raw'\n    ) AS [result] \n-- WHERE total_amount < 0 \nGROUP BY payment_type\nORDER BY payment_type;\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "nyc_taxi_discovery",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"name": "1_explore_taxi_zone",
+	"properties": {
+		"folder": {
+			"name": "nyc_taxi/discovery"
+		},
+		"content": {
+			"query": "-- This is auto-generated code\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'https://dlsynapsenyc.dfs.core.windows.net/nyc-taxi-data/raw/taxi_zone.csv',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0'\n    ) AS [result]\n\n\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'https://dlsynapsenyc.dfs.core.windows.net/nyc-taxi-data/raw/taxi_zone.csv',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0',\n        HEADER_ROW=TRUE,\n        FIELDTERMINATOR=',',\n        ROWTERMINATOR= '\\n'\n    ) AS [result];\n\n\n-----------------------------\nEXEC sp_describe_first_result_set N'SELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK ''https://dlsynapsenyc.dfs.core.windows.net/nyc-taxi-data/raw/taxi_zone.csv'',\n        FORMAT = ''CSV'',\n        PARSER_VERSION = ''2.0'',\n        HEADER_ROW=TRUE,\n        FIELDTERMINATOR='','',\n        ROWTERMINATOR= ''\\n''\n    ) AS [result]; '\n\n\nSELECT\n    *\nFROM\n    OPENROWSET(\n        BULK 'abfss://nyc-taxi-data@synapsecoursedl.dfs.core.windows.net/raw/taxi_zone.csv',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0',\n        HEADER_ROW = TRUE,\n        FIELDTERMINATOR = ',',\n        ROWTERMINATOR = '\\n'\n    ) \n    WITH (\n        LocationID SMALLINT,\n        Borough VARCHAR(15),\n        Zone VARCHAR(50),\n        service_zone VARCHAR(15)\n    )AS [result]\n\nSELECT name, collation_name FROM sys.databases;\n\nSELECT\n    *\nFROM\n    OPENROWSET(\n        BULK 'https://dlsynapsenyc.dfs.core.windows.net/nyc-taxi-data/raw/taxi_zone.csv',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0',\n        HEADER_ROW = TRUE,\n        FIELDTERMINATOR = ',',\n        ROWTERMINATOR = '\\n'\n    ) \n    WITH (\n        LocationID SMALLINT,\n        Borough VARCHAR(15) COLLATE Latin1_General_100_CI_AI_SC_UTF8,\n        Zone VARCHAR(50) COLLATE Latin1_General_100_CI_AI_SC_UTF8,\n        service_zone VARCHAR(15) COLLATE Latin1_General_100_CI_AI_SC_UTF8\n    )AS [result]\n\n\nCREATE DATABASE nyc_taxi_discovery;\n\nALTER DATABASE nyc_taxi_discovery COLLATE Latin1_General_100_CI_AI_SC_UTF8;\n\n\nSELECT\n    *\nFROM\n    OPENROWSET(\n        BULK 'https://dlsynapsenyc.dfs.core.windows.net/nyc-taxi-data/raw/taxi_zone_without_header.csv',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0',\n        FIELDTERMINATOR = ',',\n        ROWTERMINATOR = '\\n'\n    ) \n    WITH (\n       \n        Borough VARCHAR(15) 2,\n        Zone VARCHAR(50) 3\n        \n    )AS [result]\n\n\ncreate external data source nyc_taxi_data_raw\nwith(\n    LOCATION = 'https://dlsynapsenyc.dfs.core.windows.net/nyc-taxi-data/raw'\n)\n \n \n    SELECT\n    *\nFROM\n    OPENROWSET(\n        BULK 'taxi_zone_without_header.csv',\n        DATA_SOURCE= 'nyc_taxi_data_raw',\n        FORMAT = 'CSV',\nPARSER_VERSION = '1.0',\n        FIRSTROW=2,\n        FIELDTERMINATOR = ',',\n        ROWTERMINATOR = '\\n'\n    ) \n    WITH (\n        locationID SMALLINT 1,\n        borough VARCHAR(15) 2,\n        zone VARCHAR(50) 3,\n        service_zone VARCHAR(15) 4\n    )AS [result]\n\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "nyc_taxi_discovery",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
