@@ -1,0 +1,9 @@
+{
+	"name": "adf-apmorgan",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "b4825c60-267c-46b6-90fe-de7de4a263db",
+		"tenantId": "b24ee3e5-0ed5-41ee-8803-fccc32ae4939"
+	}
+}
