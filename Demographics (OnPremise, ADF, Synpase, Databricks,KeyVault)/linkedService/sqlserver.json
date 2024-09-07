@@ -1,0 +1,28 @@
+{
+	"name": "sqlserver",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "LAPJUAN\\SQLEXPRESS03",
+			"database": "AdventureWorksLT2019",
+			"encrypt": "optional",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "sqldb",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault1",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "passwordsqldb"
+			}
+		},
+		"connectVia": {
+			"referenceName": "SHR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
