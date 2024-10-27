@@ -1,0 +1,9 @@
+{
+	"name": "movieadfrecommend",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "69586834-c851-4f28-b950-a781aecdc0c1",
+		"tenantId": "579ff0f7-2db3-467b-9ff0-45d12944895a"
+	}
+}
