@@ -1,0 +1,9 @@
+{
+	"name": "adventureadff",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "5a3a50c0-af8c-449b-a2e5-13576040564d",
+		"tenantId": "579ff0f7-2db3-467b-9ff0-45d12944895a"
+	}
+}
