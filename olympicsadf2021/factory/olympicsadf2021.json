@@ -1,0 +1,9 @@
+{
+	"name": "olympicsadf2021",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "5c9ea673-8669-4e73-858e-a6e056899df8",
+		"tenantId": "579ff0f7-2db3-467b-9ff0-45d12944895a"
+	}
+}
