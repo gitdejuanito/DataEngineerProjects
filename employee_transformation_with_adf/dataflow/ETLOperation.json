@@ -1,0 +1,62 @@
+{
+	"name": "ETLOperation",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ExcelEmployee",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "FinalDataset",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "FilterForItDepartment"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          EEID as string,",
+				"          {Full Name} as string,",
+				"          {Job Title} as string,",
+				"          Department as string,",
+				"          {Business Unit} as string,",
+				"          Gender as string,",
+				"          Ethnicity as string,",
+				"          Age as string,",
+				"          {Hire Date} as string,",
+				"          {Annual Salary} as string,",
+				"          {Bonus %} as string,",
+				"          Country as string,",
+				"          City as string,",
+				"          {Exit Date} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 filter(equals('IT', Department)) ~> FilterForItDepartment",
+				"FilterForItDepartment sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['final'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink1"
+			]
+		}
+	}
+}

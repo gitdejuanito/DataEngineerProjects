@@ -1,0 +1,9 @@
+{
+	"name": "employeeTranformations",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "bf832cda-d961-4010-972d-0e3b4a728710",
+		"tenantId": "579ff0f7-2db3-467b-9ff0-45d12944895a"
+	}
+}
