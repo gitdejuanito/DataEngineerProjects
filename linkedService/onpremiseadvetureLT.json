@@ -1,0 +1,21 @@
+{
+	"name": "onpremiseadvetureLT",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "LAPJUAN\\SQLEXPRESS03",
+			"database": "AdventureWorksLT2019",
+			"encrypt": "optional",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "juan4",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI1Mjg1ZDYyYi0xM2YwLTRkNzQtOWM5ZC0zMjk5Mzk2YThiY2QiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "adventureLTSELFHOST",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
