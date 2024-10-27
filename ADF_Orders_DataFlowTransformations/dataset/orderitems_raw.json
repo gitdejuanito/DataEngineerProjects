@@ -1,0 +1,48 @@
+{
+	"name": "orderitems_raw",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "raw"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "order_items.txt",
+				"fileSystem": "raw"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "ORDER_ID",
+				"type": "String"
+			},
+			{
+				"name": "LINE_ITEM_ID",
+				"type": "String"
+			},
+			{
+				"name": "PRODUCT_ID",
+				"type": "String"
+			},
+			{
+				"name": "UNIT_PRICE",
+				"type": "String"
+			},
+			{
+				"name": "QUANTITY",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

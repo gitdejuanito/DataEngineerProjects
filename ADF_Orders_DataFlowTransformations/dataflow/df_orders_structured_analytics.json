@@ -1,0 +1,146 @@
+{
+	"name": "df_orders_structured_analytics",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "structured_products",
+						"type": "DatasetReference"
+					},
+					"name": "ProductsStrutured"
+				},
+				{
+					"dataset": {
+						"referenceName": "structured_stores",
+						"type": "DatasetReference"
+					},
+					"name": "storesStructured"
+				},
+				{
+					"dataset": {
+						"referenceName": "structured_orders",
+						"type": "DatasetReference"
+					},
+					"name": "ordersStructuted"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "analytics_products_orders_monthly",
+						"type": "DatasetReference"
+					},
+					"name": "ProductOrders"
+				},
+				{
+					"dataset": {
+						"referenceName": "analytics_stores_monthly",
+						"type": "DatasetReference"
+					},
+					"name": "StoresOrdersMonthly"
+				}
+			],
+			"transformations": [
+				{
+					"name": "excluedCancelled"
+				},
+				{
+					"name": "MONTHYEAR"
+				},
+				{
+					"name": "joinProductsOrders"
+				},
+				{
+					"name": "GroupbyProductDateStatus"
+				},
+				{
+					"name": "joinStoresOrders"
+				},
+				{
+					"name": "Groupby2"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          PRODUCT_ID as integer,",
+				"          PRODUCT_NAME as string,",
+				"          UNIT_PRICE as double,",
+				"          UPDATED_TIMESTAMP as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> ProductsStrutured",
+				"source(output(",
+				"          STORE_ID as integer,",
+				"          STORE_NAME as string,",
+				"          LATITUDE as double,",
+				"          LONGITUDE as double,",
+				"          UPDATED_TIMESTAMP as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> storesStructured",
+				"source(output(",
+				"          ORDER_ID as integer,",
+				"          ORDER_DATE as date,",
+				"          CUSTOMER_ID as integer,",
+				"          ORDER_STATUS as string,",
+				"          STORE_ID as integer,",
+				"          PRODUCT_ID as integer,",
+				"          UNIT_PRICE as double,",
+				"          QUANTITY as integer,",
+				"          SUBTOTAL as double,",
+				"          UPDATED_TIMESTAMP as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> ordersStructuted",
+				"ordersStructuted filter(ORDER_STATUS != 'Cancelled') ~> excluedCancelled",
+				"excluedCancelled derive(MONTH_YEAR = toString(ORDER_DATE, 'MM-yyyy')) ~> MONTHYEAR",
+				"ProductsStrutured, MONTHYEAR join(ProductsStrutured@PRODUCT_ID == ordersStructuted@PRODUCT_ID,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> joinProductsOrders",
+				"joinProductsOrders aggregate(groupBy(PRODUCT_NAME,",
+				"          MONTH_YEAR,",
+				"          ORDER_STATUS),",
+				"     TOTAL_AMOUNT = round(sum(SUBTOTAL),2)) ~> GroupbyProductDateStatus",
+				"storesStructured, MONTHYEAR join(storesStructured@STORE_ID == ordersStructuted@STORE_ID,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> joinStoresOrders",
+				"joinStoresOrders aggregate(groupBy(STORE_NAME,",
+				"          LATITUDE,",
+				"          LONGITUDE,",
+				"          ORDER_STATUS,",
+				"          MONTH_YEAR),",
+				"     TOTAL_AMOUNT = round(sum(SUBTOTAL),2)) ~> Groupby2",
+				"GroupbyProductDateStatus sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['ProductsOrders.csv'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> ProductOrders",
+				"Groupby2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['StoresOrdersMonthly.csv'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> StoresOrdersMonthly"
+			]
+		}
+	}
+}

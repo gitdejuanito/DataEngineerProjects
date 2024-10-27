@@ -1,0 +1,9 @@
+{
+	"name": "orderssadf",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "384f4079-5108-4d26-9607-b7c3ff67fef2",
+		"tenantId": "579ff0f7-2db3-467b-9ff0-45d12944895a"
+	}
+}

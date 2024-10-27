@@ -1,0 +1,42 @@
+{
+	"name": "stores_raw",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "raw"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "stores.json",
+				"fileSystem": "raw"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"STORE_ID": {
+					"type": "string"
+				},
+				"STORE_NAME": {
+					"type": "string"
+				},
+				"WEB_ADDRESS": {
+					"type": "string"
+				},
+				"LATITUDE": {
+					"type": "string"
+				},
+				"LONGITUDE": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

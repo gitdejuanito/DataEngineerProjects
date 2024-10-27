@@ -1,0 +1,65 @@
+{
+	"name": "structured_orders",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "structured"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "orders",
+				"fileSystem": "structured"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "ORDER_ID",
+				"type": "INT32"
+			},
+			{
+				"name": "ORDER_DATE",
+				"type": "DATE"
+			},
+			{
+				"name": "CUSTOMER_ID",
+				"type": "INT32"
+			},
+			{
+				"name": "ORDER_STATUS",
+				"type": "UTF8"
+			},
+			{
+				"name": "STORE_ID",
+				"type": "INT32"
+			},
+			{
+				"name": "PRODUCT_ID",
+				"type": "INT32"
+			},
+			{
+				"name": "UNIT_PRICE",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "QUANTITY",
+				"type": "INT32"
+			},
+			{
+				"name": "SUBTOTAL",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "UPDATED_TIMESTAMP",
+				"type": "INT96"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
