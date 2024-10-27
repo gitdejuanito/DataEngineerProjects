@@ -1,9 +1,0 @@
-{
-	"name": "df-demographics",
-	"location": "uksouth",
-	"identity": {
-		"type": "SystemAssigned",
-		"principalId": "3183986f-3703-431e-85eb-f4d0e8dfb9a8",
-		"tenantId": "b24ee3e5-0ed5-41ee-8803-fccc32ae4939"
-	}
-}

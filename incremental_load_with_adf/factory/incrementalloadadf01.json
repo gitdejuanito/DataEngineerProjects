@@ -1,9 +1,0 @@
-{
-	"name": "incrementalloadadf01",
-	"location": "uksouth",
-	"identity": {
-		"type": "SystemAssigned",
-		"principalId": "f662d106-ec37-4730-ba48-0850a30a940f",
-		"tenantId": "579ff0f7-2db3-467b-9ff0-45d12944895a"
-	}
-}
