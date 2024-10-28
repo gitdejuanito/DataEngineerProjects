@@ -1,0 +1,86 @@
+{
+    "id": "/subscriptions/fcc8d58b-b40d-46e4-a3f6-9f4c9151b2f8/resourceGroups/AdventureWorks_from_OnPremise/providers/Microsoft.KeyVault/vaults/adventure-keyvaultt",
+    "name": "adventure-keyvaultt",
+    "type": "Microsoft.KeyVault/vaults",
+    "location": "uksouth",
+    "tags": {},
+    "properties": {
+        "sku": {
+            "family": "A",
+            "name": "standard"
+        },
+        "tenantId": "579ff0f7-2db3-467b-9ff0-45d12944895a",
+        "networkAcls": {
+            "bypass": "None",
+            "defaultAction": "Allow",
+            "ipRules": [],
+            "virtualNetworkRules": []
+        },
+        "accessPolicies": [
+            {
+                "tenantId": "579ff0f7-2db3-467b-9ff0-45d12944895a",
+                "objectId": "3599ddd5-a35e-48fe-84f0-6096691de367",
+                "permissions": {
+                    "keys": [
+                        "get",
+                        "list",
+                        "update",
+                        "create",
+                        "import",
+                        "delete",
+                        "recover",
+                        "backup",
+                        "restore",
+                        "GetRotationPolicy",
+                        "SetRotationPolicy",
+                        "Rotate"
+                    ],
+                    "secrets": [
+                        "get",
+                        "list",
+                        "set",
+                        "delete",
+                        "recover",
+                        "backup",
+                        "restore"
+                    ],
+                    "certificates": [
+                        "get",
+                        "list",
+                        "update",
+                        "create",
+                        "import",
+                        "delete",
+                        "recover",
+                        "backup",
+                        "restore",
+                        "managecontacts",
+                        "manageissuers",
+                        "getissuers",
+                        "listissuers",
+                        "setissuers",
+                        "deleteissuers"
+                    ]
+                }
+            },
+            {
+                "tenantId": "579ff0f7-2db3-467b-9ff0-45d12944895a",
+                "objectId": "63157003-5850-4caf-af86-c673046a5144",
+                "permissions": {
+                    "secrets": [
+                        "get",
+                        "list"
+                    ]
+                }
+            }
+        ],
+        "enabledForDeployment": false,
+        "enabledForDiskEncryption": false,
+        "enabledForTemplateDeployment": false,
+        "enableSoftDelete": true,
+        "softDeleteRetentionInDays": 90,
+        "enableRbacAuthorization": false,
+        "vaultUri": "https://adventure-keyvaultt.vault.azure.net/",
+        "provisioningState": "Succeeded"
+    }
+}
