@@ -8,5 +8,5 @@ In this Project I use the AdventureWorksLT2019 database for doing ELT with Azure
 
 3. Then I use Databricks for doing transformations to the raw tables, creating new tables doing bronze, silver and gold layers (Lakehouse architecture), we mount the ADLS and load the gold tables in a gold directory in the container.
 
-4. Finally, we créate views in Azure Synpase for analytical purposes.
+4. Finally, I créate views in Azure Synpase for analytical purposes.
 
