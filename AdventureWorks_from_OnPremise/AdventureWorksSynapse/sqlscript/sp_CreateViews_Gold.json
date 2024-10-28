@@ -1,5 +1,5 @@
 {
-	"name": "SQL script 1",
+	"name": "sp_CreateViews_Gold",
 	"properties": {
 		"content": {
 			"query": "USE golddb\nGO\n\nCREATE OR ALTER PROC CreateSQLServerlessView_gold  @ViewName nvarchar(100)\nAS \nBEGIN\n\nDECLARE @statement VARCHAR(MAX)\n\n     SET @statement = N'CREATE OR ALTER VIEW ' + @ViewName + ' AS\n        SELECT *\n        FROM\n            OPENROWSET(\n            BULK ''https://adventuredlk.dfs.core.windows.net/gold/SalesLT/' + @ViewName + '/'',\n            FORMAT = ''DELTA''\n        ) as [result]\n    '\n\n\nEXEC (@statement)\n\nEND\nGO\n",
