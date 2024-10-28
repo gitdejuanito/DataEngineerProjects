@@ -1,6 +1,6 @@
 Hi All,
 
-In this Project our source that comes from some csv files from a GitHub. This Project do a Lakehouse transformations with Azure Services
+In this Project the data sources come from some csv files from a GitHub. This Project do a Lakehouse transformations with Azure Services
 
 1. First, I use Azure Data Factory (ADF) for getting the files from the web with HTTP linked services to each website, then I copy the files to an Azure Data Lake to a "raw" directory.
 
