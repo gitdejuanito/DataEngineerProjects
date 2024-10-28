@@ -1,0 +1,20 @@
+{
+	"name": "explore_Taxi_zone",
+	"properties": {
+		"folder": {
+			"name": "Nyc_taxi_serverless/Discovery"
+		},
+		"content": {
+			"query": "use nyc_taxi_discovery\nGO\n\n-- This is auto-generated code\nSELECT\n    TOP 10 *\nFROM\n    OPENROWSET(\n        BULK 'https://nycdatalakee.dfs.core.windows.net/nyctaxidata/raw/taxi_zone.csv',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0',\n        FIRST_ROW=2\n    )     \nWITH (\n        LocationID SMALLINT,\n        Borough VARCHAR(15),\n        Zone VARCHAR(50),\n        service_zone VARCHAR(15)\n    )AS [result]\n\n\nEXEC sp_describe_first_result_set N' \n\nSELECT\n    TOP 10 *\nFROM\n    OPENROWSET(\n        BULK ''https://nycdatalakee.dfs.core.windows.net/nyctaxidata/raw/taxi_zone.csv'',\n        FORMAT = ''CSV'',\n        PARSER_VERSION = ''2.0'',\n        HEADER_ROW=TRUE\n    )     \nWITH (\n        LocationID SMALLINT,\n        Borough VARCHAR(15),\n        Zone VARCHAR(50),\n        service_zone VARCHAR(15)\n    )AS [result]\n\n\n'\n----CHANGING THE COLUMNS NAMES AND GIVING ORDER WITH CARDINAL POSITION\n\nSELECT\n    TOP 10 *\nFROM\n    OPENROWSET(\n        BULK 'https://nycdatalakee.dfs.core.windows.net/nyctaxidata/raw/taxi_zone.csv',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0',\n        HEADER_ROW=TRUE\n    )     \nWITH (\n        locationID SMALLINT 1,\n        borough VARCHAR(15) 2,\n        zone VARCHAR(50) 3 ,\n        servicezone VARCHAR(15) 4\n    )AS [result]\nGO\n\n\ndrop  external data source nyc_taxi_zone;\n\n\nSELECT\n    TOP 10 *\nFROM\n    OPENROWSET(\n        BULK 'taxi_zone.csv',\n        DATA_SOURCE='nyc_taxi_zone_raw',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0',\n        HEADER_ROW=TRUE\n    )     \nWITH (\n        locationID SMALLINT 1,\n        borough VARCHAR(15) 2,\n        zone VARCHAR(50) 3 ,\n        servicezone VARCHAR(15) 4\n    )AS [result]\nGO\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "nyc_taxi_discovery",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

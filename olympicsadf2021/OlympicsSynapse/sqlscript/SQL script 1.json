@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 1",
+	"properties": {
+		"content": {
+			"query": "use TokyoDB\nGO\n\nselect  top (10) * from atheletes\ngo\n\nselect  top (10) * from coaches\ngo\n\nselect  top (10) * from gender\ngo\n\nselect  top (10) * from medals\ngo\n\nselect  top (10) * from teams\ngo",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "TokyoDB",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

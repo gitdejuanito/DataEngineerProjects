@@ -1,0 +1,20 @@
+{
+	"name": "reading _single_line_json",
+	"properties": {
+		"folder": {
+			"name": "Nyc_taxi_serverless/Discovery"
+		},
+		"content": {
+			"query": "-- This is auto-generated code\nSELECT * FROM\n    OPENROWSET(\n        BULK 'https://nycdatalakee.dfs.core.windows.net/nyctaxidata/raw/payment_type.json',\n        FORMAT = 'CSV',\n        FIELDQUOTE = '0x0b',\n        FIELDTERMINATOR ='0x0b'\n        \n\n    )\n    WITH (\n        jsonDoc Nvarchar(MAX)\n    ) AS [result]\n    CROSS APPLY OPENJSON (jsonDoc) WITH\n    (\n        payment_type SMALLINT,\n        description VARCHAR(20) '$.payment_type_desc'\n\n    )\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

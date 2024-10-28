@@ -1,0 +1,20 @@
+{
+	"name": "creating_external_Data_sources",
+	"properties": {
+		"folder": {
+			"name": "Nyc_taxi_serverless/Discovery"
+		},
+		"content": {
+			"query": "create external data source nyc_taxi_zone_raw\nwith (\n    location='https://nycdatalakee.dfs.core.windows.net/nyctaxidata/raw/'\n\n\n)\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "nyc_taxi_discovery",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

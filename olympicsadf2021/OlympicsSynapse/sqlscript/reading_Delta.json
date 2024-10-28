@@ -1,0 +1,20 @@
+{
+	"name": "reading_Delta",
+	"properties": {
+		"folder": {
+			"name": "Nyc_taxi_serverless/Discovery"
+		},
+		"content": {
+			"query": "-- This is auto-generated code\nSELECT\n    TOP 10 *\nFROM\n    OPENROWSET(\n        BULK 'https://nycdatalakee.dfs.core.windows.net/nyctaxidata/raw/trip_data_green_delta/',\n        FORMAT = 'DELTA'\n    ) AS [result]\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "nyc_taxi_discovery",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

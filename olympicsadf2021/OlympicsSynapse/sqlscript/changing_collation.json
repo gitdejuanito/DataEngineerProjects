@@ -1,0 +1,20 @@
+{
+	"name": "changing_collation",
+	"properties": {
+		"folder": {
+			"name": "Nyc_taxi_serverless/Discovery"
+		},
+		"content": {
+			"query": "select name, collation_name from sys.databases;\n\n----create a new database\n\ncreate database nyc_taxi_discovery;\n\nuse nyc_taxi_discovery;\n\n\nALTER DATABASE nyc_taxi_discovery COLLATE Latin1_General_100_CI_AI_SC_UTF8;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "nyc_taxi_discovery",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

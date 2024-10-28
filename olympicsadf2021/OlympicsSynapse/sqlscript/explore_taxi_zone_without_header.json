@@ -1,0 +1,20 @@
+{
+	"name": "explore_taxi_zone_without_header",
+	"properties": {
+		"folder": {
+			"name": "Nyc_taxi_serverless/Discovery"
+		},
+		"content": {
+			"query": "----FILE WITHOUT HEADER AND GIVING JUST A SUBSET OF COLUMNS WITH CARDINAL POSITIONS\nSELECT\n    TOP 10 *\nFROM\n    OPENROWSET(\n        BULK 'https://nycdatalakee.dfs.core.windows.net/nyctaxidata/raw/taxi_zone_without_header.csv',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0'\n    ) \nWITH (\n       \n        Borough VARCHAR(15) 2,\n        Zone VARCHAR(50) 3\n        \n    )AS [result]\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
