@@ -50,7 +50,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "select order_id, name, last_name, order_timestamp from orders where order_timestamp >'@{activity('Lookup1').output.firstRow.date1}'",
+							"value": "select order_id, name, order_timestamp from orders where order_timestamp >'@{activity('Lookup1').output.firstRow.date1}'",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
