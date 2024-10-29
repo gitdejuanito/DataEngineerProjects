@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "df_orders_to_cleansed",
+						"referenceName": "df_orders_raw_to_cleansed",
 						"type": "DataFlowReference"
 					},
 					"compute": {

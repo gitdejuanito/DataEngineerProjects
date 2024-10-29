@@ -1,5 +1,5 @@
 {
-	"name": "df_orders_to_cleansed",
+	"name": "df_orders_raw_to_cleansed",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
