@@ -2,7 +2,7 @@
 	"name": "eventtrigger",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Started",
+		"runtimeState": "Stopped",
 		"pipelines": [
 			{
 				"pipelineReference": {
@@ -14,6 +14,7 @@
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
 			"blobPathBeginsWith": "/demo/blobs/",
+			"blobPathEndsWith": ".csv",
 			"ignoreEmptyBlobs": true,
 			"scope": "/subscriptions/fcc8d58b-b40d-46e4-a3f6-9f4c9151b2f8/resourceGroups/AdventureWorks_from_OnPremise/providers/Microsoft.Storage/storageAccounts/adventuredlk",
 			"events": [
