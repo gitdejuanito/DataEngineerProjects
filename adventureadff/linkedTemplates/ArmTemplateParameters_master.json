@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adventureadff"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDatabricks1_accessToken": {
+			"value": ""
+		},
+		"onpremiseadvetureLT_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://adventuredlk.dfs.core.windows.net/"
+		},
+		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"value": "1010-192834-d9q7o29l"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://adventure-keyvaultt.vault.azure.net/"
+		},
+		"onpremiseadvetureLT_properties_typeProperties_server": {
+			"value": "LAPJUAN\\SQLEXPRESS03"
+		},
+		"onpremiseadvetureLT_properties_typeProperties_database": {
+			"value": "AdventureWorksLT2019"
+		},
+		"onpremiseadvetureLT_properties_typeProperties_userName": {
+			"value": "juan4"
+		},
+		"eventtrigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/fcc8d58b-b40d-46e4-a3f6-9f4c9151b2f8/resourceGroups/AdventureWorks_from_OnPremise/providers/Microsoft.Storage/storageAccounts/adventuredlk"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
