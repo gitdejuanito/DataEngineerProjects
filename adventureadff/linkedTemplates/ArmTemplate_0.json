@@ -43,7 +43,7 @@
 			"type": "string",
 			"defaultValue": "juan4"
 		},
-		"eventtrigger_properties_typeProperties_scope": {
+		"trigger1_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/fcc8d58b-b40d-46e4-a3f6-9f4c9151b2f8/resourceGroups/AdventureWorks_from_OnPremise/providers/Microsoft.Storage/storageAccounts/adventuredlk"
 		}
@@ -563,12 +563,12 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/eventtrigger')]",
+			"name": "[concat(parameters('factoryName'), '/trigger1')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Stopped",
+				"runtimeState": "Started",
 				"pipelines": [
 					{
 						"pipelineReference": {
@@ -581,9 +581,8 @@
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
 					"blobPathBeginsWith": "/demo/blobs/",
-					"blobPathEndsWith": ".csv",
 					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('eventtrigger_properties_typeProperties_scope')]",
+					"scope": "[parameters('trigger1_properties_typeProperties_scope')]",
 					"events": [
 						"Microsoft.Storage.BlobCreated"
 					]
