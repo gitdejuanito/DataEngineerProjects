@@ -31,9 +31,6 @@
 		},
 		"onpremiseadvetureLT_properties_typeProperties_userName": {
 			"value": "juan4"
-		},
-		"trigger1_properties_typeProperties_scope": {
-			"value": "/subscriptions/fcc8d58b-b40d-46e4-a3f6-9f4c9151b2f8/resourceGroups/AdventureWorks_from_OnPremise/providers/Microsoft.Storage/storageAccounts/adventuredlk"
 		}
 	}
 }
